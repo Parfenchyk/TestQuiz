@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyQuiz</string>
+    <string name="greeting_message">Приветствую тебя, Повелитель!</string>
+    <string name="quiz_start">Button</string>
 </resources>
