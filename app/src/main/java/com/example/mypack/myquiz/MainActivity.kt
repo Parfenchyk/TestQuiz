@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
                     currentQuizItem = key
                 }
                 val newIntent = Intent(applicationContext, QuestionActivity::class.java)
-                newIntent.putExtra("question", currentQuizItem!!.question)//TODO
-                newIntent.putExtra("answer0", currentQuizItem!!.answer.get(0))
-                newIntent.putExtra("answer1", currentQuizItem!!.answer.get(1))
-                newIntent.putExtra("correctIndex", currentQuizItem!!.correctId)
+                newIntent.putExtra(IntentKeys.KEY_QUESTION, currentQuizItem!!.question)//TODO
+                newIntent.putExtra(IntentKeys.KEY_ANSWER0, currentQuizItem!!.answer.get(0))
+                newIntent.putExtra(IntentKeys.KEY_ANSWER1, currentQuizItem!!.answer.get(1))
+                newIntent.putExtra(IntentKeys.KEY_CORRECT_INDEX, currentQuizItem!!.correctId)
                 startActivity(newIntent)
             }
         }
@@ -45,11 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    data class QuizItem(
-        val question: String = "how are you?",
-        val answer: List<String>,
-        val correctId: Int
-    )
+
 //data class QuizItem(val question: String, val answer: List<String>, val correctId: Int)
 
     fun createQuestionList(): List<QuizItem> {
@@ -83,4 +79,21 @@ class MainActivity : AppCompatActivity() {
         CORRECT, INCORRECT, UNDEFINED
     }
 }
+
+data class QuizItem(
+    val question: String = "how are you?",
+    val answer: List<String>,
+    val correctId: Int
+)
+
+class IntentKeys {
+
+    companion object {
+        val KEY_QUESTION: String = "question"
+        val KEY_ANSWER0: String = "answer0"
+        val KEY_ANSWER1: String = "answer1"
+        val KEY_CORRECT_INDEX: String = "correctIndex"
+    }
+}
+
 
